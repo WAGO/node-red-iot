@@ -1,19 +1,19 @@
 # Node-Red-Linux-Starterkit
 
-## Dockerfile
-# Node-Red on Wago 'PFC 200 G2' and 'TP 600'.
+# Build your own Docker Container
+## Node-Red on Wago 'PFC 200 G2' and 'TP 600'.
  
 Usage to start Container on arm Device  | Usage inside Browser
   ------------- | -------------
   |||
     docker run -d --name wago-node-red -p 1880:1880 -v ~/data:/root/.node-red wagopfc/node-red:3.2 | http://ip-controller:1880
-|||
+
 
 Usage to start Container on x86 Device  | Usage inside Browser
   ------------- | -------------
   |||
     docker run -d --name wago-node-red -p 1880:1880 -v ~/data:/root/.node-red -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static wagopfc/node-red:3.2  | http://127.0.0.1:1880
-|||
+
    
 If using x86 please install qemu support on your System.   
 Watch: https://ownyourbits.com/2018/06/27/running-and-building-arm-docker-containers-in-x86/ 
