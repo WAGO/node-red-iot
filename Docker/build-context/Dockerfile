@@ -22,9 +22,7 @@ RUN adduser --home /usr/src/node-red/ --disabled-password node-red \
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
 RUN npm install
-RUN npm install node-red-contrib-modbustcp
-RUN npm install node-red-dashboard
-RUN npm install node-red-contrib-telegrambot
+RUN npm install node-red-contrib-iiot-opcua node-red-contrib-modbustcp install node-red-dashboard node-red-contrib-telegrambot 
 
 # User configuration directory volume
 EXPOSE 1880
