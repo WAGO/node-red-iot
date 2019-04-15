@@ -1,8 +1,15 @@
-FROM arm32v7/node:slim
+FROM arm32v7/node:slim as base
 
 MAINTAINER Wago <Helmut.Saal@wago.com>
 MAINTAINER Wago <Jens.Sparmann@wago.com>
+MAINTAINER Wago <dirk.meihoefer@wago.com>
+MAINTAINER Wago <sergei.ikkert@wago.com>
 
+COPY resources / 
+
+RUN set -x 
+RUN apt -y update
+RUN apt -y install --no-install-recommends build-essential python
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
@@ -22,8 +29,20 @@ RUN adduser --home /usr/src/node-red/ --disabled-password node-red \
 # package.json contains Node-RED NPM module and node dependencies
 COPY package.json /usr/src/node-red/
 RUN npm install
-RUN npm install node-red-contrib-iiot-opcua node-red-contrib-modbustcp install node-red-dashboard node-red-contrib-telegrambot 
+RUN npm install node-red-contrib-iiot-opcua
+RUN npm install node-red-contrib-modbustcp
+RUN npm install node-red-dashboard
+RUN npm install node-red-contrib-telegrambot
 
+RUN apt -y purge build-essential
+RUN apt -y purge python 
+RUN apt-get -y autoremove
+RUN apt-get clean && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+FROM scratch as final
+COPY --from=base / /
+
+WORKDIR /usr/src/node-red
 # User configuration directory volume
 EXPOSE 1880
 
