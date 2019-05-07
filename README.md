@@ -1,4 +1,4 @@
-# Node-Red-Linux-Starterkit
+# node-red-iot
 
 ## Build your own Docker Container
 ### Node-Red on Wago 'PFC 200 G2' and 'TP 600'.
