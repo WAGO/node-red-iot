@@ -1,0 +1,34 @@
+name: Docker Image CI
+
+on:
+  push:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: nelonoel/branch-name@v1
+
+    - name: Customizable Docker Buildx
+      uses: ilteoood/docker_buildx@v1.0.2
+      with:
+        # Tags (comma separated) to apply to the image
+        tag: ${BRANCH_NAME}-${{github.run_number}}
+        # Name of the image
+        imageName: wagoautomation/node-red-iot
+        dockerFile: ./build-context/Dockerfile
+        # Build arguments (comma separated) used to build the image
+        # buildArg: none
+        # Indicate if the builded image should be published on Docker HUB
+        publish: true
+        # Platforms (comma separated) that should be used to build the image
+        platform: linux/arm/v7
+        # User that will publish the image, if indicated
+        dockerHubUser: ${{secrets.DockerHubUser}}
+        # Password of the dockerHubUser
+        dockerHubPassword: ${{secrets.DockerHubPassword}}

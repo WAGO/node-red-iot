@@ -1,9 +1,9 @@
 FROM arm32v7/node:slim as base
 
-MAINTAINER Wago <Helmut.Saal@wago.com>
-MAINTAINER Wago <Jens.Sparmann@wago.com>
-MAINTAINER Wago <dirk.meihoefer@wago.com>
-MAINTAINER Wago <sergei.ikkert@wago.com>
+LABEL maintainer = Wago <Helmut.Saal@wago.com>
+LABEL maintainer = Wago <dirk.meihoefer@wago.com>
+LABEL maintainer = Wago <sergei.ikkert@wago.com>
+LABEL maintainer = Wago <Jens.Sparmann@wago.com>
 
 COPY resources / 
 
