@@ -22,7 +22,7 @@ The database is be stored persistent inside the volume.
 <h4>Node-red starts himself, be patient, start takes less then 1 minutes on Touch Panel 600. <h4>
 <h5>(On PFC device start takes up to max. 1 minute.)  <h5/>
   
-<h4>Please use tag latest, earlier tags require an internet connection  to load nodejs deps on each start.<h4/>
+<h4>Please use tag 2.0.0 to get the extended Version including the official Node-Red Version.<h4/>
 
 GitHub Repository to get Docker ipk file:
 https://github.com/WAGO/docker-ipk
