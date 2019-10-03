@@ -24,5 +24,8 @@ The database is be stored persistent inside the volume.
   
 <h4>Please use tag latest, earlier tags require an internet connection  to load nodejs deps on each start.<h4/>
 
-GitHub Repository:
-https://github.com/WAGO/Node-Red-Linux-Starterkit
+GitHub Repository to get Docker ipk file:
+https://github.com/WAGO/docker-ipk
+ 
+GitHub Repository Docker quickstart:
+https://github.com/WAGO/pfc-documentation
