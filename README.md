@@ -1,4 +1,4 @@
-# node-red-iot
+# node-red-iot: tag 2.0.0 contains the first official Node-Red Version
 
 ## Build your own Docker Container
 ### Node-Red on Wago 'PFC 200 G2' and 'TP 600'.
