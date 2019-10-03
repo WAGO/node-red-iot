@@ -5,12 +5,12 @@
  
 Usage to start Container on arm Device
 
-docker run -d --name wago-node-red -p 1880:1880 -v ~/data:/root/.node-red wagopfc/node-red:latest
+docker run -d --name wago-node-red -p 1880:1880 -v ~/data:/root/.node-red wagopfc/node-red:tag
 
 
 Usage to start Container on x86 Device  | Usage inside Browser
 
-docker run -d --name wago-node-red -p 1880:1880 -v ~/data:/root/.node-red -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static wagopfc/node-red:latest
+docker run -d --name wago-node-red -p 1880:1880 -v ~/data:/root/.node-red -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static wagopfc/node-red:tag
    
 If using x86 please install qemu support on your System.   
 Watch: https://ownyourbits.com/2018/06/27/running-and-building-arm-docker-containers-in-x86/ 
