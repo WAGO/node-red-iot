@@ -14,7 +14,7 @@ RUN apt -y install --no-install-recommends build-essential python
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
 # package.json contains Node-RED NPM module and node dependencies
-COPY package.json /usr/src/node-red/
+COPY ./package.json /usr/src/node-red/
 
 # User data directory, contains flows, config and nodes.
 RUN mkdir /data
