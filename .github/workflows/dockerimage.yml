@@ -17,7 +17,7 @@ jobs:
       uses: ilteoood/docker_buildx@v1.0.2
       with:
         # Tags (comma separated) to apply to the image
-        tag: ${BRANCH_NAME}-${{github.run_number}}
+        tag: arm32-${{github.run_number}}
         # Name of the image
         imageName: wagoautomation/node-red-iot
         dockerFile: ./build-context/Dockerfile
