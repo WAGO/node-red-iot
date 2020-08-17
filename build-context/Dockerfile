@@ -33,6 +33,7 @@ RUN npm install node-red-contrib-iiot-opcua
 RUN npm install node-red-contrib-modbustcp
 RUN npm install node-red-dashboard
 RUN npm install node-red-contrib-telegrambot
+RUN npm node-red-contrib-bacnet
 
 RUN apt -y purge build-essential
 RUN apt -y purge python 
