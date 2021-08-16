@@ -1,0 +1,5 @@
+npm install node-red-contrib-iiot-opcua
+npm install node-red-contrib-modbustcp
+npm install node-red-dashboard
+npm install node-red-contrib-telegrambot
+npm install node-red-contrib-bacnet

@@ -1,54 +1,21 @@
-FROM arm32v7/node:slim as base
-
-MAINTAINER Wago <Helmut.Saal@wago.com>
-MAINTAINER Wago <Jens.Sparmann@wago.com>
-MAINTAINER Wago <dirk.meihoefer@wago.com>
-MAINTAINER Wago <sergei.ikkert@wago.com>
-
-COPY resources / 
-
-RUN set -x 
-RUN apt -y update
-RUN apt -y install --no-install-recommends build-essential python
-
-# Home directory for Node-RED application source code.
-RUN mkdir -p /usr/src/node-red
-
-# User data directory, contains flows, config and nodes.
-RUN mkdir /data
-
-WORKDIR /usr/src/node-red
-
-# Add node-red user so we aren't running as root.
-RUN adduser --home /usr/src/node-red/ --disabled-password node-red \
-    && chown -R node-red:node-red /data \
-    && chown -R node-red:node-red /usr/src/node-red
-
-#USER node-red
-
-# package.json contains Node-RED NPM module and node dependencies
-COPY package.json /usr/src/node-red/
-RUN npm install
-RUN npm install node-red-contrib-iiot-opcua
-RUN npm install node-red-contrib-modbustcp
-RUN npm install node-red-dashboard
-RUN npm install node-red-contrib-telegrambot
-RUN npm node-red-contrib-bacnet
-
-RUN apt -y purge build-essential
-RUN apt -y purge python 
-RUN apt-get -y autoremove
-RUN apt-get clean && rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ARG BASE_IMAGE=nodered/node-red
+FROM ${BASE_IMAGE} as base
+USER root
+RUN apk add curl
+COPY /resources /
+RUN chmod +x /docker-entrypoint.sh
+USER node-red
+WORKDIR /usr/src/node-red/.node-red
+RUN source /install-certificates \
+    && source /requirements.txt
+RUN rm /tmp/wago.crt 2>/dev/null || :
 
 FROM scratch as final
+LABEL maintainer = Wago <dirk.meihoefer@wago.com, sergei.ikkert@wago.com>
+LABEL description="node-red with preinstalled modules"
 COPY --from=base / /
-
+USER node-red
 WORKDIR /usr/src/node-red
-# User configuration directory volume
-EXPOSE 1880
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+CMD [ "npm start", "--cache /data/.npm", "--userDir", "/data" ]
 
-# Environment variable holding file path for flows configuration
-ENV FLOWS=flows.json
-ENV NODE_PATH=/usr/src/node-red/node_modules:/data/node_modules
-
-CMD ["npm", "start", "--", "--userDir", "/data"]
