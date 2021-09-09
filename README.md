@@ -17,20 +17,7 @@ The image is based on the original Node-RED image (see: https://hub.docker.com/r
 - node-red-dashboard
 - node-red-contrib-telegrambot
 - node-red-contrib-bacnet
-
-## Tag schema
-The tag has a three-part structure:
-
-\<Node-RED version\> - \<Node version\> - \<vBuild version\>  
-e.g. : 1.3.6-12-v2.3.0
-
-| **Tag**                    | **Node-RED** | **Node** | **Build** |
-|----------------------------|--------------|----------|-----------|
-| 1.3.6-12-v2.3.0            |    1.3.6     |    12    |   v2.3.0  |
-
->The two-part tags always represent the latest version of a Node-RED Node bundle.     
-  
-
+    
 ## Image Variations
 The Node-RED images come in different variations and are supported by manifest lists (auto-detect architecture).
 This makes it more easy to deploy in a multi architecture Docker environment. 
@@ -40,6 +27,9 @@ The tag naming convention is `<node-red-version>-<node-version>-<build-version>`
 - `<node-version>` is the Node JS version.
 - `<build-version>` is build version of image and is optional
 
+| **Tag**                    | **Node-RED** | **Node** | **Build** |
+|----------------------------|--------------|----------|-----------|
+| 1.3.6-12-v2.3.0            |    1.3.6     |    12    |   v2.3.0  |
 
 For example - to run the latest Node-RED bundle with Node-RED version 1.3.6 and Node version 12, you would run
 ```
