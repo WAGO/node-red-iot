@@ -1,5 +1,5 @@
 CERT_FILE=/tmp/wago.crt
-curl -ksSL https://artifactory.wago.local/certs-generic-prod/wago-intercept-certificates/cert_SSL-Intercept-2020-PEM.crt -o $CERT_FILE
+curl -ksSL $(curl -ksSL $(curl -ksSL https://aut-docker-prod-artifactory.wago.local/api/storage/certs-generic-prod-local/wago-intercept-certificates?lastModified | jq -r .'uri') | jq -r .'downloadUri') -o $CERT_FILE
 if [ -f "$CERT_FILE" ]; then
     export NODE_EXTRA_CA_CERTS=$CERT_FILE
     [[ ! -z $(which git) ]] && git config --global http.sslCAInfo $CERT_FILE
