@@ -29,11 +29,11 @@ The tag naming convention is `<node-red-version>-<node-version>-<build-version>`
 
 | **Tag**                    | **Node-RED** | **Node** | **Build** |
 |----------------------------|--------------|----------|-----------|
-| 1.3.6-12-v2.3.0            |    1.3.6     |    12    |   v2.3.0  |
+| 2.2.2-14-v2.7.0            |    2.2.2     |    14    |   v2.7.0  |
 
-For example - to run the latest Node-RED bundle with Node-RED version 1.3.6 and Node version 12, you would run
+For example - to run the latest Node-RED bundle with Node-RED version 2.2.2 and Node version 14, you would run
 ```
-docker run -it -p 1880:1880 -v node_red_data:/data --name mynodered wagoautomation/node-red-iot:1.3.6-12
+docker run -it -p 1880:1880 -v node_red_data:/data --name mynodered wagoautomation/node-red-iot:2.2.2-14
 ```
 
 For more detailed information about the original Node-RED docker image see [docker guide](https://nodered.org/docs/getting-started/docker).
