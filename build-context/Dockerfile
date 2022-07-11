@@ -1,7 +1,7 @@
 ARG BASE_IMAGE=nodered/node-red
 FROM ${BASE_IMAGE} as base
 USER root
-RUN apk add curl
+RUN apk add curl jq
 COPY /resources /
 RUN chmod +x /docker-entrypoint.sh
 USER node-red
@@ -17,5 +17,5 @@ COPY --from=base / /
 USER node-red
 WORKDIR /usr/src/node-red
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-CMD [ "npm start", "--cache /data/.npm", "--userDir", "/data" ]
+CMD [ "npm start", "--cache /data/.npm", "--userDir", "/data/node-red" ]
 
